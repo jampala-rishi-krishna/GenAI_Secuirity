@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+.env*
+*.sqlite3
+*.db
+*.log
+*.bak
+*.swp
+*.tmp
+*.coverage
+*.egg-info/
+
+# Node.js / Next.js
+node_modules/
+.next/
+dist/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Batch test outputs
+backend/tools/batch_test/__pycache__/
+
+# Environment and setup
+backend/env.example
+backend/setup-env.bat
+backend/setup-env.ps1
+
+# Frontend build
+frontend/.next/
+frontend/node_modules/
+frontend/dist/
+
+# Misc
+*.cache
+*.out
+*.pid
+
+# Ignore generated docs
+/docs/*.html
+/docs/*.pdf
+
+# Ignore test outputs
+*.test-results
+*.coverage
+
+# Ignore deployment artifacts
+*.tar.gz
+*.zip
+*.tgz
+
+# Ignore backups
+*.bak
+*.old
+
+# Ignore Python virtual environments
+venv/
+ENV/
+.env/
+
+# Ignore local config
+config.local.*
