@@ -52,6 +52,9 @@ class SecurityTestResponse(BaseModel):
     mitigation_applied: List[str]
     security_level: str
     timestamp: datetime
+    threat_detected: bool
+    threat_type: Optional[str]
+    ai_response: str = ""
 
 
 @router.get("/events", response_model=List[SecurityEventResponse])
@@ -143,7 +146,7 @@ async def get_security_metrics(
 async def test_security_measures(
     request: SecurityTestRequest,
     http_request: Request,
-    current_user: Optional[Dict] = Depends(auth_manager.get_current_user)
+    current_user: Optional[Dict] = Depends(auth_manager.get_current_user_optional)
 ):
     """
     Test security measures with various input types
@@ -170,6 +173,7 @@ async def test_security_measures(
         mitigation_applied = sanitization_report.get("sanitization_applied", [])
         security_level = sanitization_report.get("security_level", "low")
         
+        first_threat = threats_detected[0] if threats_detected else None
         return SecurityTestResponse(
             test_type=request.test_type,
             test_input=request.test_input,
@@ -178,7 +182,10 @@ async def test_security_measures(
             threats_detected=threats_detected,
             mitigation_applied=mitigation_applied,
             security_level=security_level,
-            timestamp=datetime.utcnow()
+            timestamp=datetime.utcnow(),
+            threat_detected=bool(threats_detected),
+            threat_type=str(first_threat) if first_threat else None,
+            ai_response=ai_response,
         )
         
     except Exception as e:

@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\J RISHI KRISHNA\Downloads\GenAI_Securing\GenAI_Securing\backend\.venv"
+VIRTUAL_ENV="C:\Users\JampalaKrishna\Downloads\GenAI_Sequirity\GenAI_Secuirity\backend\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
